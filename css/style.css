@@ -66,7 +66,7 @@ input {
 }
 
 .search-form__input {
-    background-image: url('/img/icon_search.png');
+    background-image: url('img/icon_search.png');
     background-repeat: no-repeat;
     background-position: 7px;
     width: 280px;
@@ -365,7 +365,9 @@ input {
         stroke-dasharray: 90, 150;
         stroke-dashoffset: -124;
     }
-}body {
+}
+
+body {
     font-family: 'Open Sans', sans-serif;
     background: #F2F3F3;
     color: #000000;
