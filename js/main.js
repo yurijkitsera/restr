@@ -1,7 +1,7 @@
 import { Form } from './modules/form.js';
 
 
-//Юра сюда ставишь это `https://0-1066-0.nodered-t.it.loc/wresrta?id=${+inp.value}`
+
 const obj = {
     tableBlock: document.querySelector('.table'),
     backBtn: document.querySelector('.back-result'),
