@@ -66,7 +66,7 @@ input {
 }
 
 .search-form__input {
-    background-image: url('img/icon_search.png');
+    background-image: url('./img/icon_search.png');
     background-repeat: no-repeat;
     background-position: 7px;
     width: 280px;
