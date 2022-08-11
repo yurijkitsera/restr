@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Реструктуризація заборгованості</title>
+</head>
+
+<body>
+    <div class="header">
+        <img class="logo" src="img/logo.png" alt="logo: logo">
+        <div class="element"></div>
+        <div class="title">Реструктуризація заборгованості</div>
+    </div> <!-- /.header -->
+
+    <div class="search">
+        <div class="container">
+            <div class="search-form">
+                <h1 class="search-title">Пошук договорів клієнта</h1>
+                <form class="search-form" action="">
+                    <label class="search-form__label" for="search">ID клієнта</label>
+                    <input class="search-form__input" action="" id="" name="search" placeholder="Id клієнта"
+                        autocomplete="off" required="">
+                    <button class="search-form__button"><span>Знайти</span></button>
+                </form>
+            </div> <!-- /.search-form -->
+
+            <div class="result hidden">
+                <div class="container">
+                    <h2 class="result-title">Результат пошуку</h2>
+                    <table class="table">
+                        <thead>
+                            <tr class="table-tr">
+                                <th class="table-th">ПІБ клієнта</th>
+                                <th class="table-th">Тип договору</th>
+                                <th class="table-th">Референс договору</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- /.result -->
+        </div>
+    </div>
+    <!-- /.search -->
+
+    <div class="detail hidden">
+        <div class="container">
+            <div class="back-result">Повернутись назад</div>
+            <div class="detail-contract">
+                <h2 class="detail-contract__title">Деталі угоди</h2>
+                <ul class="detail-list">
+                    
+                </ul>
+            </div>
+        </div>
+
+        <div class="decor-elem"></div>
+
+        <div class="container">
+            <div class="detail-sheme">
+                <h3 class="sheme-title">Доступні наступні схеми</h3>
+                <form class="detail-form" action="">
+                    <div>
+                        
+                    </div>
+                    <button class="detail-form_btn btn">Сформувати протокол</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /.detail -->
+
+    <div class="finish hidden">
+        <div class="container">
+            <div class="finish-list">
+                <h2 class="finish-title">Заявку відпрацьовано</h2>
+                <div class="finish-result">Протокол успішно сформовано</div>
+    
+            </div>
+            <button class="finish-btn btn">Закінчити опрацювання</button>
+        </div>
+    </div>
+    <!-- /.finish -->
+
+
+    <script src="js/main.js" type="module"></script>
+</body>
+
+</html>
