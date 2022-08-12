@@ -1,6 +1,24 @@
 export const createHTML = async (obj, arr) => {
     const block = document.querySelector(arr[0]),
-        elem = document.querySelector(arr[1][0]);
+        elem = document.querySelector(arr[1][0]),
+        err = document.querySelector('.error__block');
+
+    const __Error = () => {
+        if ( document.querySelector('.error') ) {
+
+            err.innerHTML = "";
+        }
+        if ( obj.status === "fail" ) {
+            
+            // if ( block.classList.toggle('hidden') ) {
+
+            //     block.classList.add('hidden');
+            // }
+            
+
+            return err.innerHTML = `<div class="error">${obj.result}</div>`;
+        }
+    }
 
     if (arr[1][0] === 'tbody') {
         if (elem.childNodes.length !== 0) {
@@ -8,12 +26,7 @@ export const createHTML = async (obj, arr) => {
             elem.innerHTML = "";
         }
 
-        if (obj.status === "fail") {
-
-            return block.innerHTML = `
-                <div>${obj.result}</div>
-            `;
-        }
+        __Error();
 
         for (let i in obj.result) {
 
@@ -22,12 +35,14 @@ export const createHTML = async (obj, arr) => {
                 obj.result[i].PRODUCT === "CARLOAN"
             ) {
 
+                // err.innerHTML = '';
+
                 elem.innerHTML += `
                     <tr class="table-tr">
                         <td class="table-td">${obj.result[i].NAME_CLIENT}</td>
                         <td class="table-td">${obj.result[i].PRODUCT}</td>
                         <td class="table-td">${obj.result[i].REF}</td>
-                        <td class="table-td"><button class="table-btn">Далі</button></td>
+                        <td class="table-td"><button class="table-btn btn">Далі</button></td>
                     </tr>
                 `;
             }
@@ -38,6 +53,12 @@ export const createHTML = async (obj, arr) => {
         let objects = obj.r[0].RestructCredHolidays[0];
 
         document.querySelector('.search').classList.add('hidden');
+
+        if (document.querySelector(".detail-list__info") ) {
+
+            document.querySelector(arr[1][0]).innerHTML = "";
+            document.querySelector(arr[1][1]).innerHTML = "";
+        }
 
         document.querySelector(arr[1][0]).insertAdjacentHTML('afterbegin',
             `
@@ -51,7 +72,7 @@ export const createHTML = async (obj, arr) => {
                     <span class="detail-list__info">${arr[2]}</span>
                 </li>
                 <li class="detail-list__item">Реферес угоди:
-                    <span class="detail-list__info">${objects.ref}</span>
+                    <span class="detail-list__info ref">${objects.ref}</span>
                 </li>
             `
         );
@@ -92,12 +113,7 @@ export const createHTML = async (obj, arr) => {
 
         document.querySelector('.detail').classList.add('hidden');
 
-        if (obj.status === "fail") {
-
-            return block.innerHTML = `
-                <div>${obj.result}</div>
-            `;
-        }
+        __Error();
 
         document.querySelector(arr[1][0]).insertAdjacentHTML('beforeend',
             `
