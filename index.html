@@ -16,9 +16,9 @@
 <body>
     <div class="header">
         <a href="index.html">
-            <img class="logo" src="img/logo.png" alt="logo: logo">
+            <img class="logo" src="img/logo.svg" alt="logo: logo">
         </a>
-        <div class="element"></div>
+        <hr>
         <div class="title">Реструктуризація заборгованості</div>
 
     </div> <!-- /.header -->
@@ -31,33 +31,35 @@
                     <label class="search-form__label" for="search">ID клієнта</label>
                     <input class="search-form__input" action="" id="" name="search" placeholder="Id клієнта"
                         autocomplete="off" required="">
-                    <button class="search-form__button"><span>Знайти</span></button>
+                    <button class="search-form__button btn"><span>Знайти</span></button>
                 </form>
             </div> <!-- /.search-form -->
-
             <div class="result hidden">
-                <div class="container">
-                    <h2 class="result-title">Результат пошуку</h2>
-                    <table class="table">
-                        <thead>
-                            <tr class="table-tr">
-                                <th class="table-th">ПІБ клієнта</th>
-                                <th class="table-th">Тип договору</th>
-                                <th class="table-th">Референс договору</th>
-                            </tr>
-                        </thead>
-                        <tbody></tbody>
-                    </table>
-                </div>
+
+                <h2 class="result-title">Результат пошуку</h2>
+                <table class="table">
+                    <thead>
+                        <tr class="table-tr">
+                            <th class="table-th">ПІБ клієнта</th>
+                            <th class="table-th">Тип договору</th>
+                            <th class="table-th">Референс договору</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
             </div>
-            <!-- /.result -->
         </div>
+        <!-- /.result -->
+
     </div>
     <!-- /.search -->
 
     <div class="detail hidden">
         <div class="container">
-            <div class="back-result">Повернутись назад</div>
+            <div class="back-result__block">
+                <img src="./img/arr.svg">
+                <div class="back-result">Повернутись назад</div>
+            </div>
             <div class="detail-contract">
                 <h2 class="detail-contract__title">Деталі угоди</h2>
                 <ul class="detail-list">
@@ -93,6 +95,8 @@
         </div>
     </div>
     <!-- /.finish -->
+
+    <div class="error__block container"></div>
 
 
     <script src="js/main.js" type="module"></script>
