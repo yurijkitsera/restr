@@ -11,6 +11,7 @@ const obj = {
     removeBlock: document.querySelectorAll(['.detail-list', '.detail-form>div'])
 };
 
+// https://0-1066-0.app.nr.it.loc/search?id= ../json_1.json
 await Form({
     butEl: '.search-form__button',
     url: 'https://0-1066-0.app.nr.it.loc/search?id=',
@@ -22,9 +23,10 @@ await Form({
 obj.tableBlock.addEventListener('click', (e) => {
     if (e.target.matches('.table .table-btn')) {
         let nodes = [].slice.call(document.querySelectorAll('.table .table-btn'));
-
+        
+        // https://0-1066-0.app.nr.it.loc/ref?ref= ../json_2.json
         Form({
-            butEl: `.${e.target.className}`,
+            butEl: `.${e.target.classList[0]}`,
             num: nodes.indexOf(e.target),
             url: 'https://0-1066-0.app.nr.it.loc/ref?ref=',
             type: 'GET',
@@ -45,6 +47,7 @@ obj.backBtn.addEventListener('click', (e) => {
     }
 });
 
+// https://0-1066-0.app.nr.it.loc/addprotocol , type: 'POST' ../json_3.json
 await Form({
     butEl: '.detail-form_btn',
     url: 'https://0-1066-0.app.nr.it.loc/addprotocol',
