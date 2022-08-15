@@ -14,18 +14,38 @@ export const Form = async (option) => {
     if ( !btn ) return;
  
     if ( btn.classList[0] === 'search-form__button' ) {
+        const inp = document.querySelector('.search-form__input');
+
+        inp.addEventListener('input', (e) => {
+            const values = inp.value;
+
+            if ( 
+                values.length >= 4 &&
+                !/\W|[a-zA-Z_]/.test(values)
+            ) {
+
+                if ( btn.hasAttribute('disabled') ) {
+
+                    btn.removeAttribute('disabled');
+                }
+            } else {
+                if ( !btn.hasAttribute('disabled') ) {
+
+                    btn.setAttribute('disabled', false);
+                }
+            }
+        });
+
         btn.addEventListener('click' , (e) => {
-            let inp = document.querySelector('.search-form__input');
-    
+
             e.preventDefault();
-    
-            if ( inp.value === "" ) return;
     
             //Юра сюда ставишь это option.url + inp.value
             // console.log(option.url + inp.value);
             Fetch(option.url + inp.value, option.type, [option.blockEl, option.content]);
             
-            inp.value = "";
+            inp.value = '';
+            btn.setAttribute('disabled', false);
         });
     };
 
@@ -37,30 +57,43 @@ export const Form = async (option) => {
     }
  
     if ( btn.classList[0] === 'detail-form_btn' ) {
-        const __numScheme = () => {
+        const __numScheme = ( returns = false ) => {
             const el = document.querySelectorAll('[type="radio"]');
 
             for ( let i of el ) {
-                if ( !i.checked ) continue; 
-            
-                return i.nextElementSibling.lastElementChild.innerText;
+                if ( !i.checked ) continue;
+
+                if ( btn.hasAttribute('disabled') ) {
+
+                    btn.removeAttribute('disabled');
+                }
+
+                if ( returns ) {
+
+                    return i.nextElementSibling.lastElementChild.innerText;
+                }
             };
         };
 
-        btn.addEventListener('click' , (e) => {
-            
-            e.preventDefault();
-
+        const __funClick = (e) => {
             const header = {
                 clientId: document.querySelectorAll('.detail-list__info')[1].innerText,
                 ref: document.querySelectorAll('.detail-list__info')[3].innerText,
-                numshem: __numScheme()
+                numshem: __numScheme( true )
             };
+            
+            e.preventDefault();
 
             //Юра сюда ставишь это option.url
             // console.log(option.url, header);
-            Fetch(option.url, option.type, [option.blockEl, option.content], header);    
-        });
+            Fetch(option.url, option.type, [option.blockEl, option.content], header);   
+
+            btn.setAttribute('disabled', false);
+        };
+    
+        __numScheme();
+
+        btn.addEventListener('click' , (e) => __funClick(e), {once: true});
     }
 
     if ( btn.classList[0] === 'finish-btn' ) {
@@ -73,7 +106,7 @@ export const Form = async (option) => {
             option.content[1].querySelector('.detail-list').innerHTML = "";
             option.content[1].querySelector('.detail-form>div').innerHTML = "";
             option.content[2].classList.add('hidden');
-            option.content[2].querySelector('.finish-ticket').remove();
+            option.content[2].querySelector('.finish-tickets__block').innerHTML = "";
 
         });
     }
