@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
     <title>Реструктуризація заборгованості</title>
 </head>
@@ -16,7 +17,7 @@
 <body>
     <div class="header">
         <a href="index.html">
-            <img class="logo" src="img/logo.svg" alt="logo: logo">
+            <img class="logo" src="img/logo.png" alt="logo: logo">
         </a>
         <hr>
         <div class="title">Реструктуризація заборгованості</div>
@@ -31,26 +32,28 @@
                     <label class="search-form__label" for="search">ID клієнта</label>
                     <input class="search-form__input" action="" id="" name="search" placeholder="Id клієнта"
                         autocomplete="off" required="">
-                    <button class="search-form__button btn"><span>Знайти</span></button>
+                    <button class="search-form__button btn" disabled><span>Знайти</span></button>
                 </form>
             </div> <!-- /.search-form -->
             <div class="result hidden">
-
-                <h2 class="result-title">Результат пошуку</h2>
-                <table class="table">
-                    <thead>
-                        <tr class="table-tr">
-                            <th class="table-th">ПІБ клієнта</th>
-                            <th class="table-th">Тип договору</th>
-                            <th class="table-th">Референс договору</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+                <div class="container">
+                    <h2 class="result-title">Результат пошуку</h2>
+                    <div class="table__block">
+                        <table class="table">
+                            <thead>
+                                <tr class="table-tr">
+                                    <th class="table-th">ПІБ клієнта</th>
+                                    <th class="table-th">Тип договору</th>
+                                    <th class="table-th">Референс договору</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
+            <!-- /.result -->
         </div>
-        <!-- /.result -->
-
     </div>
     <!-- /.search -->
 
@@ -77,7 +80,8 @@
                     <div>
 
                     </div>
-                    <button class="detail-form_btn btn">Сформувати протокол</button>
+                    <!--disabled-->
+                    <button class="detail-form_btn btn" disabled>Сформувати протокол</button>
                 </form>
             </div>
         </div>
@@ -89,7 +93,9 @@
             <div class="finish-list">
                 <h2 class="finish-title">Заявку відпрацьовано</h2>
                 <div class="finish-result">Протокол успішно сформовано</div>
+                <div class="finish-tickets__block">
 
+                </div>
             </div>
             <button class="finish-btn btn">Закінчити опрацювання</button>
         </div>
