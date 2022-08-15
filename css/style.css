@@ -17,6 +17,11 @@ body {
     border-bottom: 2px solid #D9D9D9;
 }
 
+.logo {
+    width: 25px;
+    height: 25px;
+}
+
 hr {
     background: #D9D9D9;
     height: 32px;
@@ -33,8 +38,9 @@ hr {
 }
 
 .container {
-    width: 1400px;
+    max-width: 1400px;
     margin: 0 auto;
+
 }
 
 /*search-form"*/
@@ -69,7 +75,7 @@ input {
     background-image: url('../img/icon_search.svg');
     background-repeat: no-repeat;
     background-position: 7px;
-    width: 280px;
+    width: 26%;
     height: 40px;
     padding: 12px;
     padding-left: 35px;
@@ -105,7 +111,6 @@ input {
     font-size: 15px;
     line-height: 20px;
     letter-spacing: 0.4px;
-
     padding: 0;
     border: none;
 }
@@ -121,13 +126,10 @@ input {
     width: 120px;
 }
 
-
-
 /*result*/
 .hidden {
     display: none;
 }
-
 
 .result {
     padding-top: 32px;
@@ -147,7 +149,6 @@ input {
     background-color: #fff;
     border-radius: 4px;
     border-collapse: collapse;
-    margin-bottom: 50px;
 }
 
 .table-tr {
@@ -177,9 +178,7 @@ input {
     border-radius: 6px;
 }
 
-
 /*Detail*/
-
 .back-result__block {
     display: flex;
     justify-content: flex-start;
@@ -315,12 +314,14 @@ input {
 
 .detail-form_btn {
     padding: 9px 30px;
-    margin-bottom: 70px;
+}
+
+.btn:disabled {
+    background: #D1D1D1;
+    cursor: auto;
 }
 
 /*Fininsh display*/
-
-
 .finish-title {
     margin-bottom: 40px;
 }
@@ -337,15 +338,43 @@ input {
     padding: 10px 23px;
 }
 
+@media (max-width: 1401px) {
+    .container {
+        padding: 0 6%;
+    }
+}
 
 @media (max-width: 992px) {
     .container {
-        width: 900px;
+        max-width: 900px;
+    }
+}
+
+@media (max-width: 580px) {
+    .table__block {
+        overflow: scroll;
+    }
+
+    .table__block::-webkit-scrollbar {
+        display: none;
+    }
+}
+
+@media (max-width: 440px) {
+    .title {
+        font-size: 16px;
+    }
+
+    .search-title {
+        font-size: 24px;
+    }
+
+    .search-form__input {
+        width: 55%;
     }
 }
 
 /* Spinner */
-
 .spinner {
     animation: rotate 2s linear infinite;
     z-index: 102;
@@ -385,38 +414,5 @@ input {
     100% {
         stroke-dasharray: 90, 150;
         stroke-dashoffset: -124;
-    }
-}
-
-
-@media (max-width: 1399.98px) {
-    .container {
-        margin-left: 50px;
-    }
-}
-
-@media (max-width: 991.98px) {
-    .table {
-        width: 80%;
-    }
-}
-
-@media (max-width: 767.98px) {
-    .table {
-        width: 70%;
-    }
-
-    .table-td {
-        font-size: 14px;
-    }
-}
-
-@media (max-width: 575.98px) {
-    .container {
-        margin-left: 20px;
-    }
-
-    .table {
-        width: 30%;
     }
 }
