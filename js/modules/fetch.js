@@ -1,7 +1,8 @@
 import { createHTML } from './HTML.js';
 
 export const Fetch = async (URL, type, arr, header = false ) => {
-    const block = document.querySelector('.search');
+    const block = document.querySelector('.search'),
+        controller = new AbortController();
     
     if ( !document.querySelector('.spinner') ) {
 
@@ -13,29 +14,47 @@ export const Fetch = async (URL, type, arr, header = false ) => {
         );
     }
 
+    setTimeout(() => controller.abort(), 1000);
+
+    const __spinnerStop = () => {
+        if ( document.querySelector('.spinner') ) {
+    
+            document.querySelector('.spinner').remove();
+        }
+    };
+    
     const __Fetch = async (param) => {
-
-        fetch(URL, param)
-        .then(res => {
-
-            return res.json();
-        })
-        .then(json => {
-            
-            if ( document.querySelector('.spinner') ) {
-
-                document.querySelector('.spinner').remove();
-            }
+        try {
+            await fetch(URL, param)
+            .then(res => {
+    
+                return res.json();
+            })
+            .then(json => {
                 
-            createHTML( json, arr );
-        });
+                __spinnerStop();  
+                createHTML( json, arr );
+            });
+        } catch(err) {
+            if (err.name == 'AbortError') { // обработать ошибку от вызова abort()
+
+                __spinnerStop();  
+
+                createHTML( {status: "fail", result: 'Час очікування минув, повторіть спробу'}, arr );
+            } else {
+                throw err;
+            }
+        }
     };
 
     if ( type === "GET" ) {
-
+        
         await __Fetch({
-            method: type
+            method: type,
+            signal: controller.signal
         });
+
+        header = false;
     }
 
     if ( 
@@ -46,6 +65,7 @@ export const Fetch = async (URL, type, arr, header = false ) => {
         await __Fetch({
             method: type,
             body: JSON.stringify(header),
+            signal: controller.signal,
             headers: {
                 'Content-Type': 'application/json',
                 'Access-Control-Allow-Origin' : '*', 
