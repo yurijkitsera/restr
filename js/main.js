@@ -4,14 +4,14 @@ import { Form } from './modules/form.js';
 
 const obj = {
     tableBlock: document.querySelector('.table'),
-    backBtn: document.querySelector('.back-result'),
+    backBtn: document.querySelector('.back-result__block'),
     searchBlock: document.querySelector('.search'),
     detailBlock: document.querySelector('.detail'),
     finishBlock: document.querySelector('.finish'),
-    removeBlock: document.querySelectorAll(['.detail-list', '.detail-form>div'])
+    removeBlock: document.querySelectorAll(['.detail-list', '.detail-form>div', '.error__block'])
 };
 
-// https://0-1066-0.app.nr.it.loc/search?id= ../json_1.json
+// https://0-1066-0.app.nr.it.loc/search?id= ../test__json/json_1.json error json_error.json
 await Form({
     butEl: '.search-form__button',
     url: 'https://0-1066-0.app.nr.it.loc/search?id=',
@@ -24,7 +24,7 @@ obj.tableBlock.addEventListener('click', (e) => {
     if (e.target.matches('.table .table-btn')) {
         let nodes = [].slice.call(document.querySelectorAll('.table .table-btn'));
         
-        // https://0-1066-0.app.nr.it.loc/ref?ref= ../json_2.json
+        // https://0-1066-0.app.nr.it.loc/ref?ref= ../test__json/json_2.json error json_error.json
         Form({
             butEl: `.${e.target.classList[0]}`,
             num: nodes.indexOf(e.target),
@@ -47,13 +47,18 @@ obj.backBtn.addEventListener('click', (e) => {
     }
 });
 
-// https://0-1066-0.app.nr.it.loc/addprotocol , type: 'POST' ../json_3.json
-await Form({
-    butEl: '.detail-form_btn',
-    url: 'https://0-1066-0.app.nr.it.loc/addprotocol',
-    type: 'POST',
-    blockEl: '.finish',
-    content: ['.finish-list']
+// https://0-1066-0.app.nr.it.loc/addprotocol , type: 'POST' test 'GET' ../test__json/json_3.json
+obj.detailBlock.addEventListener('click', (e) => {
+    if (e.target.matches('.detail [type="radio"]')) {
+        
+        Form({
+            butEl: '.detail-form_btn',
+            url: 'https://0-1066-0.app.nr.it.loc/addprotocol',
+            type: 'POST',
+            blockEl: '.finish',
+            content: ['.finish-tickets__block']
+        });
+    }
 });
 
 await Form({
