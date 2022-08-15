@@ -9,13 +9,7 @@ export const createHTML = async (obj, arr) => {
             err.innerHTML = "";
         }
         if ( obj.status === "fail" ) {
-            
-            // if ( block.classList.toggle('hidden') ) {
-
-            //     block.classList.add('hidden');
-            // }
-            
-
+    
             return err.innerHTML = `<div class="error">${obj.result}</div>`;
         }
     }
@@ -50,66 +44,74 @@ export const createHTML = async (obj, arr) => {
     }
 
     if (arr[1][0] === '.detail-list') {
-        let objects = obj.r[0].RestructCredHolidays[0];
 
         document.querySelector('.search').classList.add('hidden');
+        
+        if ( obj.status === "fail" ) {
 
-        if (document.querySelector(".detail-list__info") ) {
+            document.querySelector('.detail-sheme').classList.add('hidden');
 
-            document.querySelector(arr[1][0]).innerHTML = "";
-            document.querySelector(arr[1][1]).innerHTML = "";
+            __Error();
+        } else {
+            let objects = obj.r[0].RestructCredHolidays[0];
+        
+            if (document.querySelector(".detail-list__info") ) {
+
+                document.querySelector(arr[1][0]).innerHTML = "";
+                document.querySelector(arr[1][1]).innerHTML = "";
+            }
+
+            document.querySelector(arr[1][0]).insertAdjacentHTML('afterbegin',
+                `
+                    <li class="detail-list__item">ПІБ клієнта:
+                        <span class="detail-list__info">${arr[3]}</span>
+                    </li>
+                    <li class="detail-list__item">ID:
+                        <span class="detail-list__info">${objects.clientid}</span>
+                    </li>
+                    <li class="detail-list__item">Тип:
+                        <span class="detail-list__info">${arr[2]}</span>
+                    </li>
+                    <li class="detail-list__item">Реферес угоди:
+                        <span class="detail-list__info ref">${objects.ref}</span>
+                    </li>
+                `
+            );
+
+            document.querySelector(arr[1][1]).insertAdjacentHTML('afterbegin',
+                `
+                    <div class="block-input">
+                        <div class="custom-radio">
+                            <label>
+                                <input type="radio" name="radio">
+                                <div class="custom-radio__label">
+                                    Для Украины схема<span class="number-sheme">${objects.ua}</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="custom-radio">
+                            <label>
+                                <input type="radio" name="radio">
+                                <div class="custom-radio__label">
+                                    Для ВПО схема<span class="number-sheme">${objects.idp}</span>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="custom-radio">
+                            <label>
+                                <input type="radio" name="radio">
+                                <div class="custom-radio__label">
+                                    Окупація/ за кордном<span class="number-sheme">4</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                `
+            );
         }
-
-        document.querySelector(arr[1][0]).insertAdjacentHTML('afterbegin',
-            `
-                <li class="detail-list__item">ПІБ клієнта:
-                    <span class="detail-list__info">${arr[3]}</span>
-                </li>
-                <li class="detail-list__item">ID:
-                    <span class="detail-list__info">${objects.clientid}</span>
-                </li>
-                <li class="detail-list__item">Тип:
-                    <span class="detail-list__info">${arr[2]}</span>
-                </li>
-                <li class="detail-list__item">Реферес угоди:
-                    <span class="detail-list__info ref">${objects.ref}</span>
-                </li>
-            `
-        );
-
-        document.querySelector(arr[1][1]).insertAdjacentHTML('afterbegin',
-            `
-                <div class="block-input">
-                    <div class="custom-radio">
-                        <label>
-                            <input type="radio" name="radio">
-                            <div class="custom-radio__label">
-                                Для Украины схема<span class="number-sheme">${objects.ua}</span>
-                            </div>
-                        </label>
-                    </div>
-                    <div class="custom-radio">
-                        <label>
-                            <input type="radio" name="radio">
-                            <div class="custom-radio__label">
-                                Для ВПО схема<span class="number-sheme">${objects.idp}</span>
-                            </div>
-                        </label>
-                    </div>
-                    <div class="custom-radio">
-                        <label>
-                            <input type="radio" name="radio">
-                            <div class="custom-radio__label">
-                                Окупація/ за кордном<span class="number-sheme">4</span>
-                            </div>
-                        </label>
-                    </div>
-                </div>
-            `
-        );
     }
 
-    if (arr[1][0] === '.finish-list') {
+    if (arr[1][0] === '.finish-tickets__block') {
 
         document.querySelector('.detail').classList.add('hidden');
 
