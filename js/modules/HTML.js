@@ -115,8 +115,6 @@ export const createHTML = async (obj, arr) => {
 
         document.querySelector('.detail').classList.add('hidden');
 
-        __Error();
-
         document.querySelector(arr[1][0]).insertAdjacentHTML('beforeend',
             `
                 <div class="finish-ticket">Тікет <span class="ticket">${obj.result}</span></div>
