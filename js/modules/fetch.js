@@ -14,7 +14,7 @@ export const Fetch = async (URL, type, arr, header = false ) => {
         );
     }
 
-    setTimeout(() => controller.abort(), 1000);
+    setTimeout(() => controller.abort(), 30000);
 
     const __spinnerStop = () => {
         if ( document.querySelector('.spinner') ) {
@@ -33,14 +33,14 @@ export const Fetch = async (URL, type, arr, header = false ) => {
             .then(json => {
                 
                 __spinnerStop();  
-                createHTML( json, arr );
+                return createHTML( json, arr );
             });
         } catch(err) {
             if (err.name == 'AbortError') { // обработать ошибку от вызова abort()
 
                 __spinnerStop();  
 
-                createHTML( {status: "fail", result: 'Час очікування минув, повторіть спробу'}, arr );
+                return createHTML( { status: "fail", result: 'Час очікування минув, повторіть спробу' }, arr );
             } else {
                 throw err;
             }
