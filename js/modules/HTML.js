@@ -85,7 +85,7 @@ export const createHTML = async (obj, arr) => {
                     <label>
                         <input type="radio" name="radio">
                         <div class="custom-radio__label">
-                        для України / ВПО (за замовчуванням)- схема<span class="number-sheme">1</span>
+                        для України / ВПО (за замовчуванням) - схема<span class="number-sheme">1</span>
                         </div>
                     </label>
                 </div>
