@@ -144,6 +144,10 @@ input {
     margin-bottom: 34px;
 }
 
+.table__block {
+    margin-bottom: 35px;
+}
+
 .table {
     width: 70%;
     background-color: #fff;
@@ -253,7 +257,11 @@ input {
 }
 
 .block-input {
-    margin-bottom: 35px;
+    margin-bottom: 15px;
+}
+
+.main-block {
+    margin-bottom: 50px;
 }
 
 .number-sheme {
