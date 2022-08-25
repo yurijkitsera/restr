@@ -4,12 +4,12 @@ export const createHTML = async (obj, arr) => {
         err = document.querySelector('.error__block');
 
     const __Error = () => {
-        if ( document.querySelector('.error') ) {
+        if (document.querySelector('.error')) {
 
             err.innerHTML = "";
         }
-        if ( obj.status === "fail" ) {
-    
+        if (obj.status === "fail") {
+
             return err.innerHTML = `<div class="error">${obj.result}</div>`;
         }
     }
@@ -46,16 +46,16 @@ export const createHTML = async (obj, arr) => {
     if (arr[1][0] === '.detail-list') {
 
         document.querySelector('.search').classList.add('hidden');
-        
-        if ( obj.status === "fail" ) {
+
+        if (obj.status === "fail") {
 
             document.querySelector('.detail-sheme').classList.add('hidden');
 
             __Error();
         } else {
             let objects = obj.r[0].RestructCredHolidays[0];
-        
-            if (document.querySelector(".detail-list__info") ) {
+
+            if (document.querySelector(".detail-list__info")) {
 
                 document.querySelector(arr[1][0]).innerHTML = "";
                 document.querySelector(arr[1][1]).innerHTML = "";
@@ -80,40 +80,126 @@ export const createHTML = async (obj, arr) => {
 
             document.querySelector(arr[1][1]).insertAdjacentHTML('afterbegin',
                 `
-                    <div class="block-input">
-                        <div class="custom-radio">
-                            <label>
-                                <input type="radio" name="radio">
-                                <div class="custom-radio__label">
-                                    Для Украины схема<span class="number-sheme">${objects.ua}</span>
-                                </div>
-                            </label>
+            <div class="block-input main-block">
+                <div class="custom-radio">
+                    <label>
+                        <input type="radio" name="radio">
+                        <div class="custom-radio__label">
+                        для України / ВПО (за замовчуванням)- схема<span class="number-sheme">1</span>
                         </div>
-                        <div class="custom-radio">
-                            <label>
-                                <input type="radio" name="radio">
-                                <div class="custom-radio__label">
-                                    Для ВПО схема<span class="number-sheme">${objects.idp}</span>
-                                </div>
-                            </label>
-                        </div>
-                        <div class="custom-radio">
-                            <label>
-                                <input type="radio" name="radio">
-                                <div class="custom-radio__label">
-                                    Окупація/ за кордном<span class="number-sheme">4</span>
-                                </div>
-                            </label>
-                        </div>
+                    </label>
+                </div>
+                <div class="custom-radio">
+                <label>
+                    <input type="radio" name="radio">
+                    <div class="custom-radio__label">
+                    окупація / за кордоном (за замовчуванням) - схема<span class="number-sheme">4</span>
                     </div>
-                `
+                </label>
+            </div>
+            </div>
+        `
             );
+            if (objects.ua >= "5") {
+                document.querySelector(arr[1][1]).insertAdjacentHTML('afterbegin',
+                    `
+                        <div class="block-input">
+                            <div class="custom-radio">
+                                <label>
+                                    <input type="radio" name="radio">
+                                    <div class="custom-radio__label">
+                                        для України - схема<span class="number-sheme">2</span>
+                                    </div>
+                                </label>
+                            </div>
+                            <div class="custom-radio">
+                                <label>
+                                    <input type="radio" name="radio">
+                                    <div class="custom-radio__label">
+                                    для України - схема<span class="number-sheme">3</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        </div>
+                    `
+                );
+            }
+
+
+            if (objects.ua < "5") {
+                document.querySelector(arr[1][1]).insertAdjacentHTML('afterbegin',
+                    `
+                        <div class="block-input">
+                            <div class="custom-radio">
+                                <label>
+                                    <input type="radio" name="radio">
+                                    <div class="custom-radio__label">
+                                        для України - схема<span class="number-sheme">${objects.ua}</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        </div>
+                    `
+                );
+
+            }
+
+            if (objects.idp >= "5") {
+                document.querySelector(arr[1][1]).insertAdjacentHTML('afterbegin',
+                    `
+                       <div class="block-input">
+                           <div class="custom-radio">
+                               <label>
+                                   <input type="radio" name="radio">
+                                   <div class="custom-radio__label">
+                                       для ВПО - схема<span class="number-sheme">2</span>
+                                   </div>
+                               </label>
+                           </div>
+                           <div class="custom-radio">
+                               <label>
+                                   <input type="radio" name="radio">
+                                   <div class="custom-radio__label">
+                                   для ВПО - схема<span class="number-sheme">4</span>
+                                   </div>
+                               </label>
+                           </div>
+                       </div>
+                       </div>
+                   `
+                );
+            }
+
+
+            if (objects.idp < "5") {
+                document.querySelector(arr[1][1]).insertAdjacentHTML('afterbegin',
+                    `
+                        <div class="block-input">
+                            <div class="custom-radio">
+                                <label>
+                                    <input type="radio" name="radio">
+                                    <div class="custom-radio__label">
+                                        для ВПО - схема<span class="number-sheme">${objects.idp}</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                        </div>
+                    `
+                );
+
+            }
+
         }
     }
 
     if (arr[1][0] === '.finish-tickets__block') {
 
         document.querySelector('.detail').classList.add('hidden');
+
+        __Error();
 
         document.querySelector(arr[1][0]).insertAdjacentHTML('beforeend',
             `
