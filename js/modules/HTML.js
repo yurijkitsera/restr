@@ -77,9 +77,9 @@ export const createHTML = async (obj, arr) => {
                     </li>
                 `
             );
-
-            document.querySelector(arr[1][1]).insertAdjacentHTML('afterbegin',
-                `
+            if (objects.status !== 'fail') {
+                document.querySelector(arr[1][1]).insertAdjacentHTML('afterbegin',
+                    `
             <div class="block-input main-block">
                 <div class="custom-radio">
                     <label>
@@ -99,7 +99,20 @@ export const createHTML = async (obj, arr) => {
             </div>
             </div>
         `
-            );
+                );
+            } else {
+                document.querySelector(arr[1][1]).insertAdjacentHTML('afterbegin',
+                    `
+        <div class="block-input main-block">
+            <div class="custom-radio">
+                    <div class="custom-radio__label">Реструктуризація недоступна &#128532</div>
+            </div>
+    
+        </div>
+        </div>
+    `
+                );
+            }
             if (objects.ua >= "5") {
                 document.querySelector(arr[1][1]).insertAdjacentHTML('afterbegin',
                     `
