@@ -26,7 +26,9 @@ export const createHTML = async (obj, arr) => {
 
             if (
                 obj.result[i].PRODUCT === "MORTGAGE" ||
-                obj.result[i].PRODUCT === "CARLOAN"
+                obj.result[i].PRODUCT === "Mortgage" ||
+                obj.result[i].PRODUCT === "CARLOAN" ||
+                obj.result[i].PRODUCT === "Carloan"
             ) {
 
                 // err.innerHTML = '';
