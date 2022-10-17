@@ -1,7 +1,8 @@
 export const createHTML = async (obj, arr) => {
     const block = document.querySelector(arr[0]),
         elem = document.querySelector(arr[1][0]),
-        err = document.querySelector('.error__block');
+        err = document.querySelector('.error__block'),
+        title = document.querySelector('.finish-result');
 
     const __Error = () => {
         if (document.querySelector('.error')) {
@@ -10,8 +11,11 @@ export const createHTML = async (obj, arr) => {
         }
         if (obj.status === "fail") {
 
+            title.innerHTML = "Помилка формування";
             return err.innerHTML = `<div class="error">${obj.result}</div>`;
+
         }
+
     }
 
     if (arr[1][0] === 'tbody') {
