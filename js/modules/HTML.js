@@ -9,7 +9,7 @@ export const createHTML = async (obj, arr) => {
 
             err.innerHTML = "";
         }
-        if (obj.status === "fail") {
+        if (obj.status != "success") {
 
             title.innerHTML = "Помилка формування";
             return err.innerHTML = `<div class="error">${obj.result}</div>`;
